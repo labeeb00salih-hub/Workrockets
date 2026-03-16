@@ -2,20 +2,47 @@
 
 @theme {
   --font-sans: var(--font-inter);
-  
-  --color-primary: #000000;
-  --color-secondary: #FFFFFF;
-  --color-accent: #F5F5F5;
-  --color-text-main: #333333;
+
+  --color-deep-shadow: #0B0504;
+  --color-ember-brown: #3B1509;
+  --color-orange-glow: #F28C1D;
+  --color-golden-orange: #FFB432;
+  --color-amber-highlight: #FCD26D;
+  --color-pale-glow: #FFE7A8;
+
+  --color-background: #0B0504;
+  --color-foreground: #FFE7A8;
+  --color-primary: #F28C1D;
+  --color-primary-foreground: #0B0504;
+  --color-secondary: #3B1509;
+  --color-secondary-foreground: #FFE7A8;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #333333;
+  --background: #0B0504;
+  --foreground: #FFE7A8;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.mask-image-linear-to-r {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }

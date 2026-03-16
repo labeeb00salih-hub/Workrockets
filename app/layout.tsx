@@ -22,10 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} antialiased bg-white text-gray-900 flex flex-col min-h-screen`}
+        className={`${inter.variable} antialiased bg-deep-shadow text-pale-glow flex flex-col min-h-screen`}
       >
         <Navbar />
-        <main className="flex-grow pt-20">
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />

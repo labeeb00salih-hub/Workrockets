@@ -1,17 +1,19 @@
 import { Hero } from "@/components/sections/Hero";
-import { Services } from "@/components/sections/Services";
-import { WhyUs } from "@/components/sections/WhyUs";
-import { SocialProof } from "@/components/sections/SocialProof";
-import { Contact } from "@/components/sections/Contact";
+import { CoreServicePillars } from "@/components/sections/CoreServicePillars";
+import { PathToRevenue } from "@/components/sections/PathToRevenue";
+import { RealityCheck } from "@/components/sections/RealityCheck";
+import { CTA } from "@/components/sections/CTA";
+import { FAQ } from "@/components/sections/FAQ";
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-deep-shadow">
       <Hero />
-      <Services />
-      <WhyUs />
-      <SocialProof />
-      <Contact />
-    </>
+      <CoreServicePillars />
+      <PathToRevenue />
+      <RealityCheck />
+      <CTA />
+      <FAQ />
+    </div>
   );
 }

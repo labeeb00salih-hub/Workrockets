@@ -1,113 +1,129 @@
 "use client";
+import { Button } from "@/components/ui/button";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+export const Hero = () => {
+    const containerRef = useRef<HTMLElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end start"],
+    });
 
-const ANIMATED_PHRASES = [
-    "creates content at scale",
-    "analyzes content decay",
-    "automates content refresh",
-];
-
-export function Hero() {
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex((prev) => (prev + 1) % ANIMATED_PHRASES.length);
-        }, 3000); // Faster cycle for snappy feel
-        return () => clearInterval(interval);
-    }, []);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
     return (
-        <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-6 text-center overflow-hidden bg-[#FDFBF7]">
-            {/* Procedural Crumbled Paper Texture */}
-            <div className="absolute inset-0 z-0 opacity-100 pointer-events-none">
-                <svg className="w-full h-full opacity-80 mix-blend-multiply" xmlns="http://www.w3.org/2000/svg">
-                    <filter id="paper-texture">
-                        {/* Large folds/creases */}
-                        <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="4" result="noise" />
-                        <feDiffuseLighting in="noise" lightingColor="#fff" surfaceScale="2">
-                            <feDistantLight azimuth="45" elevation="60" />
-                        </feDiffuseLighting>
-                        {/* This lighting creates the high-contrast peaks and valleys of crushed paper */}
-                        <feSpecularLighting in="noise" surfaceScale="4" specularConstant="1" specularExponent="20" result="specular">
-                            <feDistantLight azimuth="45" elevation="60" />
-                        </feSpecularLighting>
+        <section
+            ref={containerRef}
+            className="relative overflow-hidden bg-deep-shadow"
+        >
+            {/* Background Image with Parallax/Pan Effect */}
+            <motion.div
+                style={{ scale, y }}
+                className="absolute inset-0 w-full h-full z-0"
+            >
+                <div
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{
+                        backgroundImage: "url('/assets/hero-bg-3.jpg')",
+                    }}
+                />
+                <div className="absolute inset-0 bg-deep-shadow/20" />
+            </motion.div>
 
-                        {/* Fine grain for paper feel */}
-                        <feTurbulence type="fractalNoise" baseFrequency="0.4" numOctaves="3" result="grain" />
-                        <feBlend in="specular" in2="grain" mode="multiply" result="texture" />
-                    </filter>
+            {/* Main Hero Content (Occupies full screen) */}
+            <div className="container mx-auto px-4 relative z-10 text-center text-pale-glow min-h-screen flex flex-col justify-center pt-32 md:pt-40">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="flex flex-col items-center gap-6"
+                >
+                    {/* Top Tag */}
+                    <div className="inline-block px-4 py-1.5 rounded-full bg-ember-brown/20 border border-ember-brown/30 backdrop-blur-md mb-2">
+                        <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-orange-glow">
+                            FOR B2B TECHNOLOGY COMPANIES
+                        </span>
+                    </div>
 
-                    {/* Apply the filter to a rect filling the screen */}
-                    <rect width="100%" height="100%" filter="url(#paper-texture)" opacity="1" fill="#e5e5e5" />
-                </svg>
+                    {/* Main Headline */}
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] max-w-6xl">
+                        AUTOMATE YOUR COMPLETE <br className="hidden md:block" />
+                        <span className="text-orange-glow">GO-TO-MARKET</span> PROCESS
+                    </h1>
 
-                {/* Overlay subtle gradient to soften the harsh SVG shadows */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/60 mix-blend-overlay" />
+                    {/* Subhead */}
+                    <p className="text-base md:text-lg text-white/90 max-w-3xl font-medium leading-relaxed mt-4">
+                        OUR GTM ENGINEERS DESIGN, AUTOMATE, AND OPTIMIZE THE SYSTEMS THAT DRIVE PREDICTABLE REVENUE GROWTH FOR B2B TECH COMPANIES.
+                    </p>
+
+                    {/* CTA Button */}
+                    <div className="mt-8">
+                        <Button
+                            size="lg"
+                            className="rounded-full bg-orange-glow text-deep-shadow hover:bg-golden-orange font-bold text-base px-8 py-6 tracking-wide shadow-xl shadow-orange-glow/20 transition-all hover:scale-105"
+                        >
+                            AUDIT MY GTM SYSTEMS
+                        </Button>
+                    </div>
+
+                    {/* Bottom Italic Text */}
+                    <div className="mt-6 text-xs md:text-sm font-medium italic text-pale-glow/80 tracking-wide">
+                        DISCOVER <span className="text-orange-glow not-italic font-bold">AUTOMATION OPPORTUNITIES</span> ACROSS YOUR ENTIRE GO-TO-MARKET STRATEGY
+                    </div>
+                </motion.div>
             </div>
 
-
-
-
-
-            <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-8">
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.1] relative">
-                    Work Rockets
-                    {/* Grid allows the container to resize to the tallest item automatically */}
-                    <span className="grid place-items-center mt-4 h-[3.5em] md:h-auto">
-                        <AnimatePresence mode="wait">
-                            <motion.span
-                                key={index}
-                                className="col-start-1 row-start-1 text-gray-800"
-                                initial={{ opacity: 0, y: 15, filter: "blur(8px)", rotate: -1 }}
-                                animate={{ opacity: 1, y: 0, filter: "blur(0px)", rotate: 0 }}
-                                exit={{ opacity: 0, y: -15, filter: "blur(8px)", rotate: 1 }}
-                                transition={{
-                                    opacity: { duration: 0.2 },
-                                    default: { duration: 0.4, ease: [0.23, 1, 0.32, 1] }
-                                }}
-                            >
-                                {ANIMATED_PHRASES[index]}
-                            </motion.span>
-                        </AnimatePresence>
-                        {/* Invisible spacers for layout stability */}
-                        <span className="col-start-1 row-start-1 opacity-0 pointer-events-none select-none invisible" aria-hidden="true">
-                            creates content at scale
-                        </span>
-                        <span className="col-start-1 row-start-1 opacity-0 pointer-events-none select-none invisible" aria-hidden="true">
-                            automates content refresh
-                        </span>
-                        <span className="col-start-1 row-start-1 opacity-0 pointer-events-none select-none invisible" aria-hidden="true">
-                            analyzes content decay
-                        </span>
+            {/* Tech Stack Marquee - Positioned below the main fold */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1 }}
+                className="relative z-10 w-full pb-24 overflow-hidden group"
+            >
+                {/* Heading */}
+                <div className="text-center mb-10">
+                    <span className="text-orange-glow font-bold tracking-widest uppercase text-sm md:text-base">
+                        Our Tech Stack
                     </span>
-                </h1>
-
-                <p className="max-w-xl mx-auto text-lg md:text-xl text-gray-600 mt-8 md:mt-12">
-                    Scale content production without scaling headcount.
-                    Turn repetitive tasks into automated workflows.
-                </p>
-
-                <div className="flex flex-col sm:flex-row items-center gap-4 mt-8">
-                    <Link
-                        href="#get-started"
-                        className="group px-8 py-4 bg-black text-white text-lg font-semibold rounded-xl hover:bg-gray-800 hover:shadow-xl transition-all flex items-center gap-2"
-                    >
-                        Get Started
-                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                    <Link
-                        href="#contact"
-                        className="px-8 py-4 bg-white text-gray-900 border border-gray-200 text-lg font-medium rounded-xl hover:bg-gray-50 transition-colors"
-                    >
-                        Contact Us
-                    </Link>
                 </div>
-            </div>
+
+                {/* Vignette / Fade Edges */}
+                <div className="absolute inset-0 z-20 pointer-events-none mask-image-linear-to-r" />
+
+                {/* Marquee Container */}
+                <div className="flex w-full overflow-hidden mask-image-linear-to-r">
+                    <div className="flex gap-16 py-6 animate-scroll whitespace-nowrap min-w-full">
+                        {[...TECH_STACK, ...TECH_STACK].map((tech, index) => (
+                            <div
+                                key={`${tech.name}-${index}`}
+                                className="relative flex-shrink-0"
+                            >
+                                <img
+                                    src={tech.src}
+                                    alt={tech.name}
+                                    className="w-16 h-16 md:w-20 md:h-20 object-contain filter grayscale opacity-60 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </motion.div>
         </section>
     );
-}
+};
+
+const TECH_STACK = [
+    { name: "Clay", src: "https://www.google.com/s2/favicons?sz=128&domain=clay.com" },
+    { name: "Apollo", src: "https://www.google.com/s2/favicons?sz=128&domain=apollo.io" },
+    { name: "Make", src: "https://www.google.com/s2/favicons?sz=128&domain=make.com" },
+    { name: "AirOps", src: "https://www.google.com/s2/favicons?sz=128&domain=airops.com" },
+    { name: "Zapier", src: "https://www.google.com/s2/favicons?sz=128&domain=zapier.com" },
+    { name: "HubSpot", src: "https://www.google.com/s2/favicons?sz=128&domain=hubspot.com" },
+    { name: "n8n", src: "https://www.google.com/s2/favicons?sz=128&domain=n8n.io" },
+    { name: "Semrush", src: "https://www.google.com/s2/favicons?sz=128&domain=semrush.com" },
+    { name: "Salesforce", src: "https://www.google.com/s2/favicons?sz=128&domain=salesforce.com" },
+    { name: "HeyReach", src: "https://www.google.com/s2/favicons?sz=128&domain=heyreach.io" },
+];
