@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatedSection, StaggerList, StaggerItem } from "@/components/ui/animated-section";
 
 const services = [
   {
@@ -28,56 +28,41 @@ const services = [
 
 export const WhatWeDo = () => {
   return (
-    <section className="py-20 md:py-28 border-t border-border">
+    <section className="py-24 md:py-32 border-t border-border">
       <div className="max-w-3xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
+        <AnimatedSection>
+          <div className="w-8 h-[3px] bg-blue/30 rounded-full mb-4" />
           <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.02em] text-text mb-4">
             What we actually do
           </h2>
-          <p className="text-base md:text-lg text-muted leading-relaxed mb-10">
+          <p className="text-base md:text-lg text-muted leading-[1.7] mb-12">
             We take one recurring job, turn it into an automation we build and run, and deliver the output every week. Real things we run:
           </p>
-        </motion.div>
+        </AnimatedSection>
 
-        <div className="space-y-6">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="border-l-2 border-border pl-6 py-1"
-            >
-              <h3 className="text-base md:text-lg font-medium text-text mb-1">
+        <StaggerList className="space-y-8">
+          {services.map((service) => (
+            <StaggerItem key={service.title} className="border-l-2 border-blue/25 pl-6 py-1 hover:border-blue transition-colors duration-200">
+              <h3 className="text-base md:text-lg font-medium text-text mb-1.5">
                 {service.title}
               </h3>
               <p className="text-sm md:text-base text-muted leading-relaxed">
                 {service.description}
               </p>
               {service.guarantee && (
-                <p className="text-sm text-orange font-medium mt-2 italic">
+                <p className="text-sm text-orange font-medium mt-2.5 italic">
                   {service.guarantee}
                 </p>
               )}
-            </motion.div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerList>
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.4, delay: 0.4 }}
-          className="text-base md:text-lg text-muted leading-relaxed mt-10"
-        >
-          We start with one job, prove it, then take the next. One headache at a time — not a suite you have to buy all at once.
-        </motion.p>
+        <AnimatedSection delay={0.2} className="mt-12">
+          <p className="text-base md:text-lg text-muted leading-[1.7]">
+            We start with one job, prove it, then take the next. One headache at a time — not a suite you have to buy all at once.
+          </p>
+        </AnimatedSection>
       </div>
     </section>
   );
