@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-const inter = Inter({
-  variable: "--font-inter",
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Work Rockets | Workflow Automation Services",
-  description: "Scale your operations with intelligent workflow automation. Work Rockets creates content at scale, analyzes decay, and automates refreshes.",
+  title: "WorkRockets | We run the work. You get it back done.",
+  description: "We take your recurring operational work, build it into an automation we run, and hand back the finished result every week. No tool to learn. No dashboard to babysit.",
 };
 
 export default function RootLayout({
@@ -22,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} antialiased bg-deep-shadow text-pale-glow flex flex-col min-h-screen`}
+        className={`${instrumentSans.variable} antialiased bg-bg text-text flex flex-col min-h-screen`}
       >
         <Navbar />
         <main className="flex-grow">

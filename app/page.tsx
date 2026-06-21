@@ -1,19 +1,21 @@
 import { Hero } from "@/components/sections/Hero";
-import { CoreServicePillars } from "@/components/sections/CoreServicePillars";
-import { PathToRevenue } from "@/components/sections/PathToRevenue";
-import { RealityCheck } from "@/components/sections/RealityCheck";
-import { CTA } from "@/components/sections/CTA";
-import { FAQ } from "@/components/sections/FAQ";
+import { Problem } from "@/components/sections/Problem";
+import { WhatWeDo } from "@/components/sections/WhatWeDo";
+import { HowItWorks } from "@/components/sections/HowItWorks";
+import { WhyNotAgency } from "@/components/sections/WhyNotAgency";
+import { HonestPart } from "@/components/sections/HonestPart";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export default function Home() {
   return (
-    <div className="bg-deep-shadow">
+    <div className="bg-bg">
       <Hero />
-      <CoreServicePillars />
-      <PathToRevenue />
-      <RealityCheck />
-      <CTA />
-      <FAQ />
+      <Problem />
+      <WhatWeDo />
+      <HowItWorks />
+      <WhyNotAgency />
+      <HonestPart />
+      <FinalCTA />
     </div>
   );
 }
