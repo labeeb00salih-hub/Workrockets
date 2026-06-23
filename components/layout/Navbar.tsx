@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ShinyButton } from "@/components/ui/shiny-button";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,12 +35,9 @@ export function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center">
-          <Link
-            href="#contact"
-            className="px-5 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 bg-orange text-white hover:bg-orange/90 focus:outline-none focus:ring-2 focus:ring-orange/50 focus:ring-offset-2 focus:ring-offset-bg cursor-pointer"
-          >
+          <ShinyButton href="#contact" className="px-5 py-2.5">
             Become a design partner
-          </Link>
+          </ShinyButton>
         </div>
 
         <button
@@ -60,13 +58,9 @@ export function Navbar() {
             className="md:hidden bg-bg border-b border-border overflow-hidden"
           >
             <div className="px-6 py-4">
-              <Link
-                href="#contact"
-                className="block w-full text-center py-3 bg-orange text-white rounded-lg font-medium text-sm focus:outline-none focus:ring-2 focus:ring-orange/50"
-                onClick={() => setIsOpen(false)}
-              >
+              <ShinyButton href="#contact" className="w-full justify-center">
                 Become a design partner
-              </Link>
+              </ShinyButton>
             </div>
           </motion.div>
         )}

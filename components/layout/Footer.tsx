@@ -34,10 +34,10 @@ export function Footer() {
             &copy; {new Date().getFullYear()} WorkRockets. All rights reserved.
           </p>
           <Link
-            href="mailto:hello@workrockets.com"
+            href="mailto:workrocketsai@gmail.com"
             className="text-sm text-blue hover:underline transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue/50 rounded-sm"
           >
-            hello@workrockets.com
+            workrocketsai@gmail.com
           </Link>
         </motion.div>
       </div>

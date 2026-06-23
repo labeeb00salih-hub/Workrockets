@@ -1,22 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { AnimatedTextCycle } from "@/components/ui/animated-text-cycle";
 import { DottedSurface } from "@/components/ui/dotted-surface";
-
-const TECH_STACK = [
-  { name: "Clay", src: "https://www.google.com/s2/favicons?sz=128&domain=clay.com" },
-  { name: "Apollo", src: "https://www.google.com/s2/favicons?sz=128&domain=apollo.io" },
-  { name: "Make", src: "https://www.google.com/s2/favicons?sz=128&domain=make.com" },
-  { name: "AirOps", src: "https://www.google.com/s2/favicons?sz=128&domain=airops.com" },
-  { name: "Zapier", src: "https://www.google.com/s2/favicons?sz=128&domain=zapier.com" },
-  { name: "HubSpot", src: "https://www.google.com/s2/favicons?sz=128&domain=hubspot.com" },
-  { name: "n8n", src: "https://www.google.com/s2/favicons?sz=128&domain=n8n.io" },
-  { name: "Semrush", src: "https://www.google.com/s2/favicons?sz=128&domain=semrush.com" },
-  { name: "Salesforce", src: "https://www.google.com/s2/favicons?sz=128&domain=salesforce.com" },
-  { name: "HeyReach", src: "https://www.google.com/s2/favicons?sz=128&domain=heyreach.io" },
-];
+import { ShinyButton } from "@/components/ui/shiny-button";
+import { OrbitingLogos } from "@/components/ui/orbiting-logos";
 
 const heroWords = "You hand off the work. We run it. You get it back done.".split(" ");
 
@@ -45,9 +33,9 @@ const CYCLE_WORDS = [
 
 export const Hero = () => {
   return (
-    <section className="relative bg-bg min-h-screen">
+    <section className="relative bg-bg">
       <DottedSurface>
-        <div className="pt-36 md:pt-44 pb-20">
+        <div className="pt-36 md:pt-44 pb-10">
           <div className="max-w-3xl mx-auto px-6">
             <h1 className="text-3xl md:text-5xl lg:text-[3.25rem] font-semibold tracking-[-0.02em] leading-[1.15] text-text mb-8 flex flex-wrap">
               {heroWords.map((word, i) => (
@@ -92,45 +80,23 @@ export const Hero = () => {
               No tool to learn. No dashboard to babysit. Just the work, done.
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 1.4, ease: "easeOut" }}
-            >
-              <Link
-                href="#contact"
-                className="inline-block px-7 py-3.5 text-sm font-medium rounded-lg bg-orange text-white hover:bg-orange/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange/50 focus:ring-offset-2 focus:ring-offset-bg cursor-pointer"
-              >
-                Become a design partner
-              </Link>
-            </motion.div>
+            <ShinyButton href="#contact">
+              Become a design partner
+            </ShinyButton>
           </div>
 
-          {/* Tech stack marquee */}
+          {/* Orbiting tool logos */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.8 }}
-            className="mt-28 overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1.6, ease: "easeOut" }}
+            className="mt-20 flex justify-center"
           >
-            <div className="text-center mb-8">
-              <span className="text-xs font-medium tracking-widest uppercase text-blue/50">
+            <div className="text-center">
+              <span className="text-xs font-medium tracking-widest uppercase text-blue/50 mb-6 block">
                 Tools we work with
               </span>
-            </div>
-
-            <div className="flex w-full overflow-hidden mask-image-linear-to-r">
-              <div className="flex gap-16 py-4 animate-scroll whitespace-nowrap min-w-full">
-                {[...TECH_STACK, ...TECH_STACK].map((tech, index) => (
-                  <div key={`${tech.name}-${index}`} className="flex-shrink-0">
-                    <img
-                      src={tech.src}
-                      alt={`${tech.name} logo`}
-                      className="w-10 h-10 md:w-12 md:h-12 object-contain opacity-30 grayscale hover:opacity-60 hover:grayscale-0 transition-all duration-200"
-                    />
-                  </div>
-                ))}
-              </div>
+              <OrbitingLogos />
             </div>
           </motion.div>
         </div>
