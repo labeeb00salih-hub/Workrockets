@@ -57,7 +57,7 @@ export const FinalCTA = () => {
                     name="name"
                     type="text"
                     required
-                    placeholder="Azeem"
+                    placeholder="Your first name"
                     className="w-full px-4 py-2.5 rounded-lg border border-border bg-bg text-text text-sm placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-blue/30 focus:border-blue/30 transition-colors"
                   />
                 </div>
