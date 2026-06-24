@@ -1,35 +1,46 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export function Footer() {
-    return (
-        <footer className="bg-deep-shadow border-t border-ember-brown/40 py-12 md:py-16">
-            <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-                {/* Logo & Copyright */}
-                <div className="flex flex-col gap-2">
-                    <Link href="/" className="text-xl font-bold tracking-tighter text-white">
-                        Work Rockets
-                    </Link>
-                    <p className="text-sm text-pale-glow/50">
-                        &copy; {new Date().getFullYear()} Work Rockets. All rights reserved.
-                    </p>
-                </div>
+  return (
+    <footer className="border-t border-border pt-20 pb-12">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Big bold brand name */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-12"
+        >
+          <Link href="/" className="block">
+            <span className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-[-0.03em] text-text/10 hover:text-text/20 transition-colors duration-300 select-none">
+              WorkRockets
+            </span>
+          </Link>
+        </motion.div>
 
-                {/* Links */}
-                <div className="flex flex-wrap gap-8">
-                    <Link href="#services" className="text-sm text-pale-glow/70 hover:text-orange-glow transition-colors">
-                        Services
-                    </Link>
-                    <Link href="#solutions" className="text-sm text-pale-glow/70 hover:text-orange-glow transition-colors">
-                        Solutions
-                    </Link>
-                    <Link href="#blog" className="text-sm text-pale-glow/70 hover:text-orange-glow transition-colors">
-                        Blog
-                    </Link>
-                    <Link href="#contact" className="text-sm text-pale-glow/70 hover:text-orange-glow transition-colors">
-                        Contact
-                    </Link>
-                </div>
-            </div>
-        </footer>
-    );
+        {/* Bottom row */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pt-8 border-t border-border"
+        >
+          <p className="text-sm text-muted">
+            &copy; {new Date().getFullYear()} WorkRockets. All rights reserved.
+          </p>
+          <Link
+            href="mailto:workrocketsai@gmail.com"
+            className="text-sm text-blue hover:underline transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue/50 rounded-sm"
+          >
+            workrocketsai@gmail.com
+          </Link>
+        </motion.div>
+      </div>
+    </footer>
+  );
 }

@@ -1,39 +1,34 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-instrument);
 
-  --color-deep-shadow: #0B0504;
-  --color-ember-brown: #3B1509;
-  --color-orange-glow: #F28C1D;
-  --color-golden-orange: #FFB432;
-  --color-amber-highlight: #FCD26D;
-  --color-pale-glow: #FFE7A8;
+  --color-bg: #F8F7F4;
+  --color-text: #16181C;
+  --color-muted: #575B61;
+  --color-border: #d7d6cf;
+  --color-blue: #1E5FA8;
+  --color-orange: #C2410C;
 
-  --color-background: #0B0504;
-  --color-foreground: #FFE7A8;
-  --color-primary: #F28C1D;
-  --color-primary-foreground: #0B0504;
-  --color-secondary: #3B1509;
-  --color-secondary-foreground: #FFE7A8;
+  --color-background: #F8F7F4;
+  --color-foreground: #16181C;
 }
 
 :root {
-  --background: #0B0504;
-  --foreground: #FFE7A8;
+  --background: #F8F7F4;
+  --foreground: #16181C;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-instrument), sans-serif;
 }
 
 @keyframes scroll {
   from {
     transform: translateX(0);
   }
-
   to {
     transform: translateX(-50%);
   }
@@ -41,6 +36,12 @@ body {
 
 .animate-scroll {
   animation: scroll 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll {
+    animation: none;
+  }
 }
 
 .mask-image-linear-to-r {
