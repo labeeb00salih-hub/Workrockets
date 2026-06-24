@@ -50,7 +50,7 @@ export const FinalCTA = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-text mb-1.5">
-                    First name
+                    First Name
                   </label>
                   <input
                     id="name"
@@ -64,7 +64,7 @@ export const FinalCTA = () => {
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-text mb-1.5">
-                    Work email
+                    Work Email
                   </label>
                   <input
                     id="email"
@@ -78,7 +78,7 @@ export const FinalCTA = () => {
 
                 <div>
                   <label htmlFor="domain" className="block text-sm font-medium text-text mb-1.5">
-                    Company domain
+                    Company Domain
                   </label>
                   <input
                     id="domain"
