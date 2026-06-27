@@ -64,14 +64,24 @@ export const Hero = () => {
               ))}
             </h1>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
               className="text-base md:text-lg text-muted leading-relaxed max-w-2xl mb-4"
             >
-              Recurring operational work — the repetitive jobs nobody on your team has time for — built into a machine we run and hand back done. We start with SEO, then take the next job.
-            </motion.p>
+              <span>The </span>
+              <AnimatedTextCycle
+                words={CYCLE_WORDS}
+                interval={2200}
+                className="text-orange font-medium"
+              />
+              <span>
+                {" "}
+                your team keeps putting off — we build it into a machine and run
+                it for you.
+              </span>
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
