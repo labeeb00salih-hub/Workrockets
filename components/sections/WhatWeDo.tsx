@@ -18,7 +18,7 @@ const services = [
   },
   {
     title: "Content, multiplied",
-    description: "One asset turned into ten — the repurposing work that always slips.",
+    description: "One asset turned into every format you need — the repurposing work that always slips.",
   },
   {
     title: "The follow-ups that fall through",

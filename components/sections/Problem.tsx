@@ -12,7 +12,7 @@ export const Problem = () => {
             The problem
           </h2>
           <p className="text-base md:text-lg text-muted leading-[1.7]">
-            Every growing B2B company hits the same wall: there&apos;s more repeatable work than people to do it. So it either eats your team&apos;s week or it doesn&apos;t get done. Hiring is slow and expensive. Tools just hand you more to operate. <span className="text-blue font-medium">You don&apos;t need another login — you need the work off your plate.</span>
+            Every growing B2B company hits the same wall: there&apos;s more repeatable work than people to do it. So it either eats your team&apos;s week or it doesn&apos;t get done. Hiring is slow and expensive. Tools just hand you more to operate. <span className="text-blue font-medium">You don&apos;t need another login. You need the work gone.</span>
           </p>
         </AnimatedSection>
       </div>
